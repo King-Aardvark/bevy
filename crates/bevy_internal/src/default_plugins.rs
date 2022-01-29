@@ -52,7 +52,7 @@ impl PluginGroup for DefaultPlugins {
         group.add(bevy_ui::UiPlugin::default());
 
         #[cfg(feature = "bevy_pbr")]
-        group.add(bevy_pbr::PbrPlugin::default());
+            group.add(bevy_pbr::PbrPlugin::default());
 
         #[cfg(feature = "bevy_gltf")]
         group.add(bevy_gltf::GltfPlugin::default());
@@ -76,5 +76,32 @@ impl PluginGroup for MinimalPlugins {
     fn build(&mut self, group: &mut PluginGroupBuilder) {
         group.add(bevy_core::CorePlugin::default());
         group.add(bevy_app::ScheduleRunnerPlugin::default());
+    }
+}
+
+use bevy_app::{App, Plugin};
+use bevy_window::WindowDescriptor;
+
+/// Example plugin that will add:
+/// * Resources:
+/// * [`WindowDescriptor`](bevy_window::WindowDescriptor)
+/// * Systems:
+/// * [`exit_on_esc_system`](bevy_input::system::exit_on_esc_system)
+pub struct ExamplesPlugin {
+    /// Title of the bevy window
+    pub title: String,
+}
+
+impl Plugin for ExamplesPlugin {
+    fn build(&self, app: &mut App) {
+        app.insert_resource(WindowDescriptor {
+            title: format!("Bevy - {}", self.title),
+            width: 800.,
+            height: 600.,
+            vsync: false,
+            resizable: true,
+            ..Default::default()
+        })
+            .add_system( bevy_input::system::exit_on_esc_system );
     }
 }
