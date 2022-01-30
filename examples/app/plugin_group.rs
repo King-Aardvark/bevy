@@ -4,6 +4,9 @@ use bevy::{app::PluginGroupBuilder, prelude::*};
 fn main() {
     App::new()
         // Two PluginGroups that are included with bevy are DefaultPlugins and MinimalPlugins
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         // Adding a plugin group adds all plugins in the group by default
         .add_plugins(HelloWorldPlugins)

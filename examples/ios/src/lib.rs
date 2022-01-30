@@ -11,6 +11,9 @@ fn main() {
             ..Default::default()
         })
         .insert_resource(Msaa { samples: 4 })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup_scene)
         .add_startup_system(setup_music)

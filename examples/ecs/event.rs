@@ -4,6 +4,9 @@ use bevy::prelude::*;
 /// and a system that prints a message whenever the event is received.
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_event::<MyEvent>()
         .init_resource::<EventTriggerState>()

@@ -17,6 +17,9 @@ use bevy::{
 
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_plugin(MaterialPlugin::<CustomMaterial>::default())
         .add_startup_system(setup)

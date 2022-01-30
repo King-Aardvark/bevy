@@ -14,6 +14,9 @@ fn main() {
     // the `CoreStage::Update' stage, and the system that reacts on the removal on the
     // `CoreStage::PostUpdate` stage.
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_system_to_stage(CoreStage::Update, remove_component)

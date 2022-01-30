@@ -11,6 +11,9 @@ use std::time::{Duration, Instant};
 fn main() {
     App::new()
         .insert_resource(Msaa { samples: 4 })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup_env)
         .add_startup_system(add_assets)
@@ -23,6 +26,7 @@ fn main() {
 const NUM_CUBES: u32 = 6;
 
 struct BoxMeshHandle(Handle<Mesh>);
+
 struct BoxMaterialHandle(Handle<StandardMaterial>);
 
 /// Startup system which runs only once and generates our Box Mesh

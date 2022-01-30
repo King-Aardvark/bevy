@@ -10,6 +10,9 @@ fn main() {
             vsync: false,
             ..Default::default()
         })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_plugin(FrameTimeDiagnosticsPlugin)
         .add_startup_system(infotext_system)
@@ -61,12 +64,12 @@ fn infotext_system(mut commands: Commands, asset_server: Res<AssetServer>) {
             ..Default::default()
         },
         text: Text::with_section(
-                    "This text is very long, has a limited width, is centred, is positioned in the top right and is also coloured pink.",
-                        TextStyle {
-                    font: font.clone(),
-                    font_size: 50.0,
-                    color: Color::rgb(0.8, 0.2, 0.7),
-                },
+            "This text is very long, has a limited width, is centred, is positioned in the top right and is also coloured pink.",
+            TextStyle {
+                font: font.clone(),
+                font_size: 50.0,
+                color: Color::rgb(0.8, 0.2, 0.7),
+            },
             TextAlignment {
                 horizontal: HorizontalAlign::Center,
                 vertical: VerticalAlign::Center,

@@ -14,9 +14,12 @@ use bevy::{
 /// This example creates a second window and draws a mesh from two different cameras, one in each window
 fn main() {
     let mut app = App::new();
-    app.add_plugins(DefaultPlugins)
-        .add_startup_system(setup)
-        .add_startup_system(create_new_window);
+    app.add_plugin(ExamplesPlugin {
+        title: file!().to_string(),
+    })
+    .add_plugins(DefaultPlugins)
+    .add_startup_system(setup)
+    .add_startup_system(create_new_window);
 
     let render_app = app.sub_app_mut(RenderApp);
     render_app.add_system_to_stage(RenderStage::Extract, extract_secondary_camera_phases);
@@ -45,7 +48,6 @@ const SECONDARY_PASS_DRIVER: &str = "secondary_pass_driver";
 
 fn create_new_window(
     mut create_window_events: EventWriter<CreateWindow>,
-
     mut commands: Commands,
     mut active_cameras: ResMut<ActiveCameras>,
 ) {

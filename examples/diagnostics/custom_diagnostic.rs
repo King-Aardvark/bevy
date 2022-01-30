@@ -6,6 +6,9 @@ use bevy::{
 /// This example illustrates how to create a custom diagnostic
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         // The "print diagnostics" plugin is optional. It just visualizes our diagnostics in the
         // console

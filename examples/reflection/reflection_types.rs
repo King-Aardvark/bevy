@@ -8,6 +8,9 @@ use serde::{Deserialize, Serialize};
 /// This example illustrates the various reflection types available
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .run();

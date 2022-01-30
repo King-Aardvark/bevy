@@ -5,6 +5,9 @@ use bevy::prelude::*;
 fn main() {
     App::new()
         .insert_resource(DefaultTaskPoolOptions::with_num_threads(4))
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .run();
 }

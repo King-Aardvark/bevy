@@ -12,6 +12,9 @@ use serde::de::DeserializeSeed;
 /// part of Bevy and enables a number of interesting scenarios (like scenes).
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .register_type::<Foo>()
         .register_type::<Bar>()

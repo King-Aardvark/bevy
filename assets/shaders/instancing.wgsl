@@ -2,7 +2,9 @@
 #import bevy_pbr::mesh_struct
 
 [[group(1), binding(0)]]
-var<uniform> mesh: Mesh;
+var <uniform> mesh
+:
+Mesh;
 
 struct Vertex {
     [[location(0)]] position: vec3<f32>;
@@ -19,17 +21,25 @@ struct VertexOutput {
 };
 
 [[stage(vertex)]]
-fn vertex(vertex: Vertex) -> VertexOutput {
-    let position = vertex.position * vertex.i_pos_scale.w + vertex.i_pos_scale.xyz;
-    let world_position = mesh.model * vec4<f32>(position, 1.0);
+fn vertex(vertex
+: Vertex) -> VertexOutput {
+let position = vertex.position * vertex.i_pos_scale.w + vertex.i_pos_scale.xyz;
+let world_position = mesh.model * vec4<f32>(position, 1.0);
 
-    var out: VertexOutput;
-    out.clip_position = view.view_proj * world_position;
-    out.color = vertex.i_color;
-    return out;
+var out
+:
+VertexOutput;
+out.
+clip_position = view.view_proj * world_position;
+out.
+color = vertex.i_color;
+return
+out;
 }
 
 [[stage(fragment)]]
-fn fragment(in: VertexOutput) -> [[location(0)]] vec4<f32> {
-    return in.color;
+fn fragment(in
+: VertexOutput) -> [[location(0)]] vec4 <f32> {
+return in.
+color;
 }

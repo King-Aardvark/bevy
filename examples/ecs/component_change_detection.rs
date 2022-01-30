@@ -4,6 +4,9 @@ use rand::Rng;
 // This example illustrates how to react to component change
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_system(change_component)

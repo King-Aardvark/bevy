@@ -11,6 +11,9 @@ fn main() {
     L      - switch between directional and point lights"
     );
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_system(toggle_light)

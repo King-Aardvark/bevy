@@ -4,6 +4,9 @@ use bevy::prelude::*;
 /// an `InGame` state.
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_state(AppState::Menu)
         .add_system_set(SystemSet::on_enter(AppState::Menu).with_system(setup_menu))
@@ -104,6 +107,7 @@ fn setup_game(mut commands: Commands, asset_server: Res<AssetServer>) {
 }
 
 const SPEED: f32 = 100.0;
+
 fn movement(
     time: Res<Time>,
     input: Res<Input<KeyCode>>,

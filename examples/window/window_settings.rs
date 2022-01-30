@@ -10,6 +10,9 @@ fn main() {
             vsync: true,
             ..Default::default()
         })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_system(change_title)
         .add_system(toggle_cursor)

@@ -28,6 +28,9 @@ struct Volume(u32);
 
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         // Insert as resource the initial value for the settings resources
         .insert_resource(DisplayQuality::Medium)

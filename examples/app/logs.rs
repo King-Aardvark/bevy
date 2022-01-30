@@ -8,6 +8,9 @@ fn main() {
         //     level: bevy::log::Level::TRACE,
         //     filter: "wgpu=warn,bevy_ecs=info".to_string(),
         // })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_system(log_system)
         .run();

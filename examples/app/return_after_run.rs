@@ -7,6 +7,9 @@ fn main() {
             return_from_run: true,
         })
         .insert_resource(ClearColor(Color::rgb(0.2, 0.2, 0.8)))
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_system(system1)
         .run();

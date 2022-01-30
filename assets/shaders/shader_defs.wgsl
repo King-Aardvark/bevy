@@ -2,7 +2,9 @@
 #import bevy_pbr::mesh_struct
 
 [[group(1), binding(0)]]
-var<uniform> mesh: Mesh;
+var <uniform> mesh
+:
+Mesh;
 
 struct Vertex {
     [[location(0)]] position: vec3<f32>;
@@ -15,19 +17,27 @@ struct VertexOutput {
 };
 
 [[stage(vertex)]]
-fn vertex(vertex: Vertex) -> VertexOutput {
-    let world_position = mesh.model * vec4<f32>(vertex.position, 1.0);
+fn vertex(vertex
+: Vertex) -> VertexOutput {
+let world_position = mesh.model * vec4<f32>(vertex.position, 1.0);
 
-    var out: VertexOutput;
-    out.clip_position = view.view_proj * world_position;
-    return out;
+var out
+:
+VertexOutput;
+out.
+clip_position = view.view_proj * world_position;
+return
+out;
 }
 
 [[stage(fragment)]]
-fn fragment() -> [[location(0)]] vec4<f32> {
-    var color = vec4<f32>(0.0, 0.0, 1.0, 1.0);
-# ifdef IS_RED 
-    color = vec4<f32>(1.0, 0.0, 0.0, 1.0);
+fn fragment()
+
+-> [[location(0)]] vec4 <f32> {
+var color = vec4<f32>(0.0, 0.0, 1.0, 1.0);
+# ifdef IS_RED
+color = vec4<f32>(1.0, 0.0, 0.0, 1.0);
 # endif
-    return color;
+return
+color;
 }

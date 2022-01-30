@@ -14,6 +14,9 @@ fn main() {
             ..Default::default()
         })
         .add_startup_system(setup)
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .run();
 }

@@ -5,6 +5,9 @@ use bevy::prelude::*;
 /// the game. This example illustrates hot reloading mesh changes.
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .run();

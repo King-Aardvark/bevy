@@ -11,6 +11,7 @@ fn main() {
 
 #[derive(Component)]
 pub struct Player;
+
 #[derive(Component)]
 pub struct PlayerCount(usize);
 

@@ -5,6 +5,9 @@ use bevy::{prelude::*, utils::Duration};
 /// This example illustrates how to create a simple plugin that prints out a message.
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         // plugins are registered as part of the "app building" process
         .add_plugin(PrintMessagePlugin {

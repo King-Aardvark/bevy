@@ -4,6 +4,9 @@ use bevy::prelude::*;
 /// interaction state.
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_system(button_system)

@@ -5,6 +5,9 @@ use bevy::{
 
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         // Adds frame time diagnostics
         .add_plugin(FrameTimeDiagnosticsPlugin::default())

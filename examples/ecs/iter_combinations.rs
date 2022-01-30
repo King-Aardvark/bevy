@@ -9,6 +9,9 @@ const DELTA_TIME: f64 = 0.01;
 fn main() {
     App::new()
         .insert_resource(Msaa { samples: 4 })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .insert_resource(AmbientLight {
             brightness: 0.03,
@@ -33,10 +36,13 @@ const NUM_BODIES: usize = 100;
 
 #[derive(Component, Default)]
 struct Mass(f32);
+
 #[derive(Component, Default)]
 struct Acceleration(Vec3);
+
 #[derive(Component, Default)]
 struct LastPos(Vec3);
+
 #[derive(Component)]
 struct Star;
 

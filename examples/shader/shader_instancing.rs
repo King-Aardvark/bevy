@@ -22,6 +22,9 @@ use bytemuck::{Pod, Zeroable};
 
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_plugin(CustomMaterialPlugin)
         .add_startup_system(setup)
@@ -64,6 +67,7 @@ fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
 
 #[derive(Component)]
 struct InstanceMaterialData(Vec<InstanceData>);
+
 impl ExtractComponent for InstanceMaterialData {
     type Query = &'static InstanceMaterialData;
     type Filter = ();
@@ -215,6 +219,7 @@ type DrawCustom = (
 );
 
 pub struct DrawMeshInstanced;
+
 impl EntityRenderCommand for DrawMeshInstanced {
     type Param = (
         SRes<RenderAssets<Mesh>>,

@@ -8,6 +8,9 @@ fn main() {
             height: 300.,
             ..Default::default()
         })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_system(toggle_override)

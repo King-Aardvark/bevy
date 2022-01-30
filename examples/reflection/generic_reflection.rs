@@ -4,6 +4,9 @@ use std::any::TypeId;
 /// You must manually register each instance of a generic type
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .register_type::<MyType<u32>>()
         .add_startup_system(setup)

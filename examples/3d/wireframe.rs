@@ -11,6 +11,9 @@ fn main() {
             features: WgpuFeatures::POLYGON_MODE_LINE,
             ..Default::default()
         })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_plugin(WireframePlugin)
         .add_startup_system(setup)

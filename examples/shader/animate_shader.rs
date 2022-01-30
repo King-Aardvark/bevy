@@ -20,6 +20,9 @@ use bevy::{
 
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_plugin(CustomMaterialPlugin)
         .add_startup_system(setup)
@@ -232,6 +235,7 @@ type DrawCustom = (
 );
 
 struct SetTimeBindGroup<const I: usize>;
+
 impl<const I: usize> EntityRenderCommand for SetTimeBindGroup<I> {
     type Param = SRes<TimeMeta>;
 

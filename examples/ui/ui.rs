@@ -6,6 +6,9 @@ use bevy::{
 /// This example illustrates the various features of Bevy UI.
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_system(mouse_scroll)

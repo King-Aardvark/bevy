@@ -22,6 +22,9 @@ fn main() {
             // vsync: false,
             ..Default::default()
         })
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_plugin(GameOfLifeComputePlugin)
         .add_startup_system(setup)
@@ -75,11 +78,13 @@ impl Plugin for GameOfLifeComputePlugin {
 }
 
 struct GameOfLifeImage(Handle<Image>);
+
 struct GameOfLifeImageBindGroup(BindGroup);
 
 fn extract_game_of_life_image(mut commands: Commands, image: Res<GameOfLifeImage>) {
     commands.insert_resource(GameOfLifeImage(image.0.clone()));
 }
+
 fn queue_bind_group(
     mut commands: Commands,
     pipeline: Res<GameOfLifePipeline>,
@@ -165,6 +170,7 @@ enum Initialized {
 struct DispatchGameOfLife {
     initialized: Initialized,
 }
+
 impl Default for DispatchGameOfLife {
     fn default() -> Self {
         Self {
@@ -172,6 +178,7 @@ impl Default for DispatchGameOfLife {
         }
     }
 }
+
 impl render_graph::Node for DispatchGameOfLife {
     fn update(&mut self, _world: &mut World) {
         match self.initialized {

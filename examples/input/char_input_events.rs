@@ -2,6 +2,9 @@ use bevy::{prelude::*, window::ReceivedCharacter};
 
 fn main() {
     App::new()
+        .add_plugin(ExamplesPlugin {
+            title: file!().to_string(),
+        })
         .add_plugins(DefaultPlugins)
         .add_system(print_char_event_system)
         .run();
