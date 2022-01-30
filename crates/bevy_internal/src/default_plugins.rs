@@ -52,7 +52,7 @@ impl PluginGroup for DefaultPlugins {
         group.add(bevy_ui::UiPlugin::default());
 
         #[cfg(feature = "bevy_pbr")]
-            group.add(bevy_pbr::PbrPlugin::default());
+        group.add(bevy_pbr::PbrPlugin::default());
 
         #[cfg(feature = "bevy_gltf")]
         group.add(bevy_gltf::GltfPlugin::default());
@@ -102,6 +102,6 @@ impl Plugin for ExamplesPlugin {
             resizable: true,
             ..Default::default()
         })
-            .add_system( bevy_input::system::exit_on_esc_system );
+        .add_system(bevy_input::system::exit_on_esc_system);
     }
 }
